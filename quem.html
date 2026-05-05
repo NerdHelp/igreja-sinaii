@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Quem Somos | Igreja Sinai</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Montserrat', sans-serif;
+}
+
+body{
+color:white;
+overflow-x:hidden;
+
+background:
+radial-gradient(circle at 20% 30%, rgba(31,167,165,0.08), transparent 40%),
+radial-gradient(circle at 80% 60%, rgba(31,167,165,0.06), transparent 50%),
+#0b0f14;
+}
+
+:root{
+--primary:#1fa7a5;
+}
+
+/* HEADER */
+
+header{
+position:fixed;
+top:0;
+width:100%;
+display:flex;
+justify-content:center;
+padding:20px;
+z-index:1000;
+background:rgba(0,0,0,0.25);
+backdrop-filter:blur(8px);
+}
+
+nav{
+display:flex;
+gap:30px;
+}
+
+nav a{
+text-decoration:none;
+color:white;
+font-size:15px;
+opacity:.9;
+letter-spacing:1px;
+transition:.3s;
+}
+
+nav a:hover{
+color:var(--primary);
+}
+
+/* DROPDOWN */
+
+.dropdown{
+position:relative;
+}
+
+.dropdown-menu{
+position:absolute;
+top:30px;
+left:0;
+background:#0b0f14;
+padding:15px 20px;
+display:none;
+flex-direction:column;
+gap:10px;
+border-radius:6px;
+}
+
+.dropdown.active .dropdown-menu{
+display:flex;
+}
+
+/* HERO */
+
+.hero{
+height:75vh;
+position:relative;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+overflow:hidden;
+}
+
+.hero img{
+position:absolute;
+width:100%;
+height:100%;
+object-fit:cover;
+animation:zoom 20s linear infinite;
+}
+
+@keyframes zoom{
+0%{transform:scale(1)}
+100%{transform:scale(1.08)}
+}
+
+.hero-overlay{
+position:absolute;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.65);
+}
+
+.hero-content{
+position:relative;
+z-index:2;
+max-width:800px;
+}
+
+.hero h1{
+font-family:'Playfair Display', serif;
+font-size:60px;
+letter-spacing:4px;
+margin-bottom:20px;
+}
+
+.versiculo{
+font-style:italic;
+opacity:.85;
+font-size:18px;
+line-height:1.6;
+}
+
+/* SECTIONS */
+
+section{
+padding:140px 8%;
+position:relative;
+}
+
+/* CÍRCULOS */
+
+.bg-circles{
+position:absolute;
+top:50%;
+transform:translateY(-50%);
+z-index:0;
+pointer-events:none;
+}
+
+.left-bg{
+left:-200px;
+}
+
+.right-bg{
+right:-200px;
+}
+
+.circle{
+position:absolute;
+border-radius:50%;
+background:radial-gradient(circle, rgba(31,167,165,0.18), transparent 70%);
+}
+
+.c1{ width:500px; height:500px; top:-100px; }
+.c2{ width:600px; height:600px; top:100px; left:120px;}
+.c3{ width:700px; height:700px; top:250px; left:260px;}
+
+/* CONTEÚDO */
+
+.content{
+position:relative;
+z-index:2;
+max-width:900px;
+}
+
+h2{
+font-family:'Playfair Display', serif;
+font-size:42px;
+margin-bottom:30px;
+}
+
+.text{
+line-height:1.8;
+opacity:.9;
+font-size:18px;
+max-width:700px;
+}
+
+/* ALINHAMENTO */
+
+.left{
+text-align:left;
+margin-left:8%;
+}
+
+.right{
+text-align:right;
+margin-right:8%;
+margin-left:auto;
+max-width:700px;
+}
+
+/* VALORES */
+
+.valores{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:30px;
+margin-top:60px;
+}
+
+.card{
+background:#111821;
+padding:30px;
+border-radius:10px;
+transition:.4s;
+}
+
+.card:hover{
+transform:translateY(-6px);
+}
+
+.card h3{
+color:var(--primary);
+margin-bottom:10px;
+}
+
+/* RESPONSIVO */
+
+@media(max-width:900px){
+
+.hero h1{
+font-size:34px;
+}
+
+.valores{
+grid-template-columns:1fr;
+}
+
+.left,.right{
+margin:0;
+text-align:center;
+max-width:100%;
+}
+
+.bg-circles{
+display:none;
+}
+
+/* dropdown mobile */
+
+.dropdown-menu{
+position:static;
+display:none;
+}
+
+.dropdown.active .dropdown-menu{
+display:flex;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+<nav>
+
+<a href="index.html">Home</a>
+
+<div class="dropdown" id="dropdownSobre">
+<a href="#" id="btnSobre">Sobre Nós</a>
+<div class="dropdown-menu">
+<a href="quem.html">Quem Somos</a>
+<a href="lideranca.html">Liderança</a>
+</div>
+</div>
+
+<a href="ministerios.html">Ministérios</a>
+<a href="pg.html">PGs</a>
+
+</nav>
+</header>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<img src="igreja1.jpg">
+
+<div class="hero-overlay"></div>
+
+<div class="hero-content">
+<h1>Bem-vindo à Igreja Sinai</h1>
+
+<p class="versiculo">
+"Ide, portanto, fazei discípulos de todas as nações..."<br>
+Mateus 28:19
+</p>
+
+</div>
+
+</section>
+
+<!-- QUEM SOMOS -->
+
+<section>
+
+<div class="bg-circles left-bg">
+<div class="circle c1"></div>
+<div class="circle c2"></div>
+<div class="circle c3"></div>
+</div>
+
+<div class="content left">
+
+<h2>Quem Somos</h2>
+
+<p class="text">
+Somos uma igreja comprometida em viver o evangelho de forma real e prática.
+Acreditamos que o cristianismo vai além de palavras — ele transforma vidas,
+restaura histórias e revela o propósito de Deus em cada pessoa.
+</p>
+
+<br>
+
+<p class="text">
+Vivemos em comunhão, como uma família, buscando um relacionamento profundo com Deus
+e crescendo juntos no propósito que Ele tem para nós.
+</p>
+
+</div>
+
+</section>
+
+<!-- VISÃO -->
+
+<section>
+
+<div class="bg-circles right-bg">
+<div class="circle c1"></div>
+<div class="circle c2"></div>
+<div class="circle c3"></div>
+</div>
+
+<div class="content right">
+
+<h2>Nossa Visão</h2>
+
+<p class="text">
+Formar discípulos que vivam o evangelho de maneira genuína,
+manifestando o Reino de Deus em todas as áreas da vida
+e influenciando o mundo ao seu redor.
+</p>
+
+</div>
+
+</section>
+
+<!-- VALORES -->
+
+<section>
+
+<h2 style="text-align:center;">Nossos Valores</h2>
+
+<div class="valores">
+
+<div class="card">
+<h3>Relacionamento com Deus</h3>
+<p>Buscamos intimidade com Deus diariamente.</p>
+</div>
+
+<div class="card">
+<h3>Fundamento Bíblico</h3>
+<p>Vivemos de acordo com a Palavra de Deus.</p>
+</div>
+
+<div class="card">
+<h3>Discipulado</h3>
+<p>Fazemos discípulos que fazem discípulos.</p>
+</div>
+
+<div class="card">
+<h3>Honra</h3>
+<p>Valorizamos pessoas e o que Deus está fazendo.</p>
+</div>
+
+<div class="card">
+<h3>Excelência</h3>
+<p>Servimos com dedicação e propósito.</p>
+</div>
+
+<div class="card">
+<h3>Comunhão</h3>
+<p>Crescemos juntos como uma família em Cristo.</p>
+</div>
+
+</div>
+
+</section>
+
+<script>
+
+const dropdownSobre = document.getElementById("dropdownSobre")
+const btnSobre = document.getElementById("btnSobre")
+
+btnSobre.onclick = (e)=>{
+e.preventDefault()
+dropdownSobre.classList.toggle("active")
+}
+
+</script>
+
+</body>
+</html>

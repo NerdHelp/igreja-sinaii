@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Igreja Sinai</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Montserrat', sans-serif;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+background:#0b0f14;
+color:white;
+}
+
+:root{
+--primary:#1fa7a5;
+}
+
+/* MENU */
+
+header{
+position:fixed;
+top:0;
+width:100%;
+display:flex;
+justify-content:center;
+padding:20px;
+z-index:1000;
+background:rgba(0,0,0,0.25);
+backdrop-filter:blur(8px);
+}
+
+nav{
+display:flex;
+gap:30px;
+}
+
+nav a{
+text-decoration:none;
+color:white;
+font-size:15px;
+opacity:.9;
+font-weight:300;
+letter-spacing:1px;
+transition:.3s;
+}
+
+nav a:hover{
+color:var(--primary);
+}
+
+/* DROPDOWN CORRIGIDO */
+
+.dropdown{
+position:relative;
+}
+
+.dropdown-menu{
+position:absolute;
+top:30px;
+left:0;
+background:#0b0f14;
+padding:15px 20px;
+display:none;
+flex-direction:column;
+gap:10px;
+border-radius:6px;
+}
+
+.dropdown.active .dropdown-menu{
+display:flex;
+}
+
+.dropdown-menu a{
+font-size:14px;
+}
+
+/* MENU MOBILE */
+
+.menu-btn{
+display:none;
+flex-direction:column;
+gap:5px;
+cursor:pointer;
+}
+
+.menu-btn span{
+width:26px;
+height:3px;
+background:white;
+display:block;
+}
+
+/* HERO */
+
+.hero{
+height:100vh;
+position:relative;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+overflow:hidden;
+}
+
+/* SLIDES */
+
+.slides{
+position:absolute;
+width:100%;
+height:100%;
+overflow:hidden;
+will-change:transform;
+}
+
+.slide{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%) scale(1);
+min-width:100%;
+min-height:100%;
+object-fit:cover;
+opacity:0;
+transition:opacity 2s ease;
+animation:zoom 18s linear infinite;
+}
+
+.slide.active{
+opacity:1;
+}
+
+@keyframes zoom{
+0%{transform:translate(-50%,-50%) scale(1)}
+100%{transform:translate(-50%,-50%) scale(1.08)}
+}
+
+/* OVERLAY */
+
+.hero-overlay{
+position:absolute;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.55);
+}
+
+/* CONTENT */
+
+.hero-content{
+position:relative;
+z-index:2;
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:25px;
+}
+
+/* LOGO + TITULO */
+
+.logo-title{
+display:flex;
+align-items:center;
+gap:20px;
+}
+
+.logo-title img{
+height:70px;
+}
+
+.hero h1{
+font-family:'Playfair Display', serif;
+font-size:90px;
+font-weight:500;
+letter-spacing:6px;
+text-transform:uppercase;
+opacity:0;
+transform:translateY(30px);
+animation:fadeUp 2s ease forwards;
+}
+
+@keyframes fadeUp{
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+/* BOTÃO HERO */
+
+.hero-btn{
+margin-top:10px;
+padding:14px 34px;
+border:2px solid var(--primary);
+color:white;
+text-decoration:none;
+border-radius:4px;
+font-size:15px;
+letter-spacing:1px;
+transition:.3s;
+}
+
+.hero-btn:hover{
+background:var(--primary);
+}
+
+/* SEPARADOR */
+
+.section-divider{
+width:100%;
+height:120px;
+background:linear-gradient(
+to bottom,
+rgba(0,0,0,0),
+rgba(31,167,165,0.15),
+rgba(0,0,0,0)
+);
+}
+
+/* SEÇÕES */
+
+section{
+padding:120px 8%;
+}
+
+h2{
+font-family:'Playfair Display', serif;
+font-size:38px;
+margin-bottom:30px;
+font-weight:500;
+letter-spacing:2px;
+}
+
+/* CULTOS */
+
+.cultos{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:60px;
+align-items:center;
+}
+
+.cultos-box{
+background:#111821;
+padding:50px;
+border-radius:10px;
+}
+
+.cultos-box h3{
+font-size:40px;
+color:var(--primary);
+margin:10px 0;
+font-weight:400;
+}
+
+.cultos img{
+width:100%;
+border-radius:10px;
+}
+
+/* CULTO AO VIVO */
+
+.live-box{
+margin-top:30px;
+padding:25px;
+background:#0f151c;
+border:1px solid rgba(31,167,165,.3);
+border-radius:10px;
+}
+
+.live-box h4{
+color:var(--primary);
+margin-bottom:10px;
+font-size:20px;
+}
+
+.live-btn{
+display:inline-block;
+margin-top:10px;
+padding:12px 24px;
+border:2px solid var(--primary);
+color:white;
+text-decoration:none;
+border-radius:4px;
+transition:.3s;
+}
+
+.live-btn:hover{
+background:var(--primary);
+}
+
+/* PLANO */
+
+.plano{
+display:grid;
+grid-template-columns:1fr 1fr;
+align-items:center;
+gap:60px;
+}
+
+.plano h2{
+font-size:56px;
+line-height:1.1;
+}
+
+.plano p{
+margin-top:20px;
+font-size:18px;
+max-width:500px;
+}
+
+.plano-btn{
+display:inline-block;
+margin-top:40px;
+padding:16px 34px;
+border:2px solid var(--primary);
+text-decoration:none;
+color:white;
+border-radius:4px;
+transition:.3s;
+}
+
+.plano-btn:hover{
+background:var(--primary);
+}
+
+.plano img{
+width:100%;
+max-width:420px;
+}
+
+/* MAPA */
+
+.local{
+text-align:center;
+}
+
+iframe{
+margin-top:40px;
+width:100%;
+height:420px;
+border:none;
+border-radius:10px;
+}
+
+/* FOOTER */
+
+footer{
+margin-top:80px;
+padding:40px;
+background:#05070a;
+text-align:center;
+}
+
+footer a{
+color:var(--primary);
+text-decoration:none;
+}
+
+/* ANIMAÇÃO SCROLL */
+
+.reveal{
+opacity:0;
+transform:translateY(40px);
+transition:1s;
+}
+
+.reveal.active{
+opacity:1;
+transform:translateY(0);
+}
+
+/* RESPONSIVO */
+
+@media(max-width:900px){
+
+header{
+justify-content:space-between;
+padding:15px 25px;
+}
+
+.menu-btn{
+display:flex;
+}
+
+nav{
+position:absolute;
+top:70px;
+left:0;
+width:100%;
+background:#0b0f14;
+flex-direction:column;
+align-items:center;
+gap:25px;
+padding:30px 0;
+display:none;
+}
+
+nav.active{
+display:flex;
+}
+
+.dropdown-menu{
+position:static;
+display:none;
+}
+
+.dropdown.active .dropdown-menu{
+display:flex;
+}
+
+.hero h1{
+font-size:44px;
+letter-spacing:3px;
+}
+
+.logo-title{
+flex-direction:column;
+}
+
+.cultos,
+.plano{
+grid-template-columns:1fr;
+gap:40px;
+}
+
+.plano{
+text-align:center;
+}
+
+.plano img{
+margin:auto;
+max-width:280px;
+}
+
+iframe{
+height:320px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="menu-btn" id="menuBtn">
+<span></span>
+<span></span>
+<span></span>
+</div>
+
+<nav id="menu">
+<a href="index.html">Home</a>
+
+<div class="dropdown" id="dropdownSobre">
+<a href="#" id="btnSobre">Sobre Nós</a>
+<div class="dropdown-menu">
+<a href="quem.html">Quem Somos</a>
+<a href="lideranca.html">Liderança</a>
+</div>
+</div>
+
+<a href="ministerios.html">Ministérios</a>
+<a href="pg.html">PGs</a>
+</nav>
+
+</header>
+
+<section class="hero">
+
+<div class="slides">
+<img src="igreja1.jpg" class="slide active">
+<img src="igreja2.jpg" class="slide">
+<img src="igreja3.jpg" class="slide">
+<img src="igreja4.jpg" class="slide">
+</div>
+
+<div class="hero-overlay"></div>
+
+<div class="hero-content">
+<div class="logo-title">
+<img src="logo_transparente.png">
+<h1>Igreja Sinai</h1>
+</div>
+
+<a href="#cultos" class="hero-btn">Ver horários de culto</a>
+</div>
+
+</section>
+
+<div class="section-divider"></div>
+
+<section id="cultos" class="reveal">
+
+<div class="cultos">
+
+<div>
+<img src="horario.png">
+</div>
+
+<div class="cultos-box">
+
+<h2>Culto</h2>
+
+<p>Domingo</p>
+
+<h3>10:00</h3>
+
+<p>
+Av. Dezenove de Janeiro, 759<br>
+Vila Carrão - São Paulo
+</p>
+
+<div class="live-box">
+
+<h4>Culto ao Vivo</h4>
+
+<p>Assista nossas transmissões diretamente no YouTube.</p>
+
+<a href="https://www.youtube.com/@igreja.sinai." target="_blank" class="live-btn">
+Assistir no YouTube
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<div class="section-divider"></div>
+
+<section id="plano" class="reveal">
+
+<div class="plano">
+
+<div>
+
+<h2>Plano de<br>Leitura<br>Bíblica</h2>
+
+<p>
+Sabemos da importância da Palavra de Deus e queremos caminhar juntos no propósito de ler a Bíblia durante todo o ano.
+</p>
+
+<a href="plano.pdf" target="_blank" class="plano-btn">
+Clique e acesse o plano de leitura
+</a>
+
+</div>
+
+<div>
+<img src="plano.png">
+</div>
+
+</div>
+
+</section>
+
+<div class="section-divider"></div>
+
+<section id="local" class="local reveal">
+
+<h2>Localização</h2>
+
+<iframe src="https://maps.google.com/maps?q=Av.%20Dezenove%20de%20Janeiro%20759%20Sao%20Paulo&t=&z=15&ie=UTF8&iwloc=&output=embed"></iframe>
+
+</section>
+
+<footer>
+
+<p>Igreja Sinai © 2026</p>
+
+<p style="margin-top:10px;">
+Instagram:
+<a href="https://www.instagram.com/igreja.sinai/" target="_blank">
+@igreja.sinai
+</a>
+</p>
+
+</footer>
+
+<script>
+
+const menuBtn = document.getElementById("menuBtn")
+const menu = document.getElementById("menu")
+const dropdownSobre = document.getElementById("dropdownSobre")
+const btnSobre = document.getElementById("btnSobre")
+
+menuBtn.onclick = () =>{
+menu.classList.toggle("active")
+}
+
+btnSobre.onclick = (e) =>{
+e.preventDefault()
+dropdownSobre.classList.toggle("active")
+}
+
+/* SLIDES */
+
+let slides = document.querySelectorAll(".slide")
+let index = 0
+
+function changeSlide(){
+slides[index].classList.remove("active")
+index++
+if(index >= slides.length){
+index = 0
+}
+slides[index].classList.add("active")
+}
+
+setInterval(changeSlide, 5000)
+
+/* PARALLAX */
+
+let hero = document.querySelector(".slides")
+
+window.addEventListener("scroll", function(){
+let scroll = window.scrollY
+hero.style.transform = "translateY(" + scroll * 0.3 + "px)"
+})
+
+/* REVEAL */
+
+function reveal(){
+let reveals = document.querySelectorAll(".reveal")
+for(let i=0;i<reveals.length;i++){
+let windowHeight = window.innerHeight
+let elementTop = reveals[i].getBoundingClientRect().top
+let visible = 120
+if(elementTop < windowHeight - visible){
+reveals[i].classList.add("active")
+}
+}
+}
+
+window.addEventListener("scroll", reveal)
+
+</script>
+
+</body>
+</html>
